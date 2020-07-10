@@ -4,14 +4,20 @@ using UnityEngine;
 public class AgentAvoidance : BaseAgent
 {
     [SerializeField]
-    private Vector3 idlePosition;
+    private Vector3 idlePosition = Vector3.zero;
 
     [SerializeField]
-    private Vector3 leftPosition;
+    private Vector3 leftPosition = Vector3.zero;
 
     [SerializeField]
-    private Vector3 rightPosition;
+    private Vector3 rightPosition = Vector3.zero;
 
+    private TargetMoving targetMoving;
+
+    void Awake() 
+    {
+        targetMoving = transform.parent.GetComponentInChildren<TargetMoving>();
+    }
 
     public override void OnEpisodeBegin()
     {
@@ -21,7 +27,7 @@ public class AgentAvoidance : BaseAgent
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(this.transform.localPosition);
-        sensor.AddObservation(TargetMoving.Instance.transform.localPosition);
+        sensor.AddObservation(targetMoving.transform.localPosition);
     }
 
     public override void OnActionReceived(float[] vectorAction)
@@ -45,7 +51,7 @@ public class AgentAvoidance : BaseAgent
     public void TakeAwayPoints()
     {
         AddReward(-0.01f);
-        TargetMoving.Instance.ResetTarget();
+        targetMoving.ResetTarget();
         EndEpisode();
         StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
     }
@@ -53,7 +59,7 @@ public class AgentAvoidance : BaseAgent
     public void GivePoints()
     {
         AddReward(1.0f);
-        TargetMoving.Instance.ResetTarget();
+        targetMoving.ResetTarget();
         EndEpisode();
         StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
     }

@@ -1,10 +1,10 @@
 ﻿using DilmerGames.Core;
 using UnityEngine;
 
-public class TargetMoving : Singleton<TargetMoving>
+public class TargetMoving : MonoBehaviour
 {
     [SerializeField]
-    private AgentAvoidance agent;
+    private AgentAvoidance agent = null;
 
     [SerializeField]
     private float targetSpeed = 0.5f;

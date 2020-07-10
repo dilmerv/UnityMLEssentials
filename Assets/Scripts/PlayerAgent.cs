@@ -10,7 +10,7 @@ public class PlayerAgent : BaseAgent
     private float speed = 10.0f;
 
     [SerializeField]
-    private GameObject target;
+    private GameObject target = null;
 
     [SerializeField]
     private float distanceRequired = 1.5f;
