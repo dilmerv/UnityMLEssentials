@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using Unity.MLAgents;
-using Unity.MLAgents.Sensors;
+﻿using Unity.MLAgents.Sensors;
 using UnityEngine;
 
 
-public class PlayerAgent : Agent
+public class PlayerAgent : BaseAgent
 {
     #region Exposed Instance Variables
 
@@ -16,18 +14,6 @@ public class PlayerAgent : Agent
 
     [SerializeField]
     private float distanceRequired = 1.5f;
-
-    [SerializeField]
-    private MeshRenderer groundMeshRenderer;
-
-    [SerializeField]
-    private Material successMaterial;
-
-    [SerializeField]
-    private Material failureMaterial;
-
-    [SerializeField]
-    private Material defaultMaterial;
 
     #endregion
 
@@ -97,8 +83,6 @@ public class PlayerAgent : Agent
         {
             EndEpisode();
 
-            //SetReward(-0.1f);
-
             // go back and punish the agent for their performance
             StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
         }
@@ -108,13 +92,5 @@ public class PlayerAgent : Agent
     {
         actionsOut[0] = Input.GetAxis("Horizontal"); // x
         actionsOut[1] = Input.GetAxis("Vertical"); // z
-    }
-
-
-    private IEnumerator SwapGroundMaterial(Material mat, float time)
-    {
-        groundMeshRenderer.material = mat;
-        yield return new WaitForSeconds(time);
-        groundMeshRenderer.material = defaultMaterial;
     }
 }
