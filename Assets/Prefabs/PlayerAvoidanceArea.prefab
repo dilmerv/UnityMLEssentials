@@ -535,7 +535,7 @@ MonoBehaviour:
     VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 58edcccadd5214e0e8c4b1c4d9495b2c, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 8bdabc0044f00e945aed9a1361509cf7, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PlayerAvoidance

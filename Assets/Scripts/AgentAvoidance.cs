@@ -27,7 +27,8 @@ public class AgentAvoidance : BaseAgent
     public override void OnEpisodeBegin()
     {
         transform.localPosition = idlePosition;
-        score.text = $"{this.GetCumulativeReward().ToString("F2")}";
+      //  score.text = $"{this.GetCumulativeReward()}";
+       // Debug.Log(this.GetCumulativeReward());
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -63,7 +64,7 @@ public class AgentAvoidance : BaseAgent
 
     public void GivePoints()
     {
-        AddReward(Random.Range(1.0f, 3.0f));
+        AddReward(1.0f);
         targetMoving.ResetTarget();
         EndEpisode();
         StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
