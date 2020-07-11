@@ -15,9 +15,19 @@ public class AgentAvoidance : BaseAgent
     private Vector3 rightPosition = Vector3.zero;
 
     [SerializeField]
-    private TextMeshProUGUI score;
+    private TextMeshProUGUI rewardValue = null;
 
-    private TargetMoving targetMoving;
+    [SerializeField]
+    private TextMeshProUGUI episodesValue = null;
+
+    [SerializeField]
+    private TextMeshProUGUI stepValue = null;
+
+    private TargetMoving targetMoving = null;
+
+    private float overallReward = 0;
+
+    private float overallSteps = 0;
 
     void Awake() 
     {
@@ -27,8 +37,6 @@ public class AgentAvoidance : BaseAgent
     public override void OnEpisodeBegin()
     {
         transform.localPosition = idlePosition;
-      //  score.text = $"{this.GetCumulativeReward()}";
-       // Debug.Log(this.GetCumulativeReward());
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -58,14 +66,29 @@ public class AgentAvoidance : BaseAgent
     {
         AddReward(-0.01f);
         targetMoving.ResetTarget();
+        
+        UpdateStats();
+
         EndEpisode();
         StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
+    }
+
+    private void UpdateStats()
+    {
+        overallReward += this.GetCumulativeReward();
+        overallSteps += this.StepCount;
+        rewardValue.text = $"{overallReward.ToString("F2")}";
+        episodesValue.text = $"{this.CompletedEpisodes}";
+        stepValue.text = $"{overallSteps}";
     }
 
     public void GivePoints()
     {
         AddReward(1.0f);
         targetMoving.ResetTarget();
+        
+        UpdateStats();
+
         EndEpisode();
         StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
     }
@@ -81,13 +104,13 @@ public class AgentAvoidance : BaseAgent
         //move left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            actionsOut[0] = -1;
+            actionsOut[0] = 1;
         }
 
         //move right
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            actionsOut[0] = 1;
+            actionsOut[0] = 2;
         }
     }
 }
