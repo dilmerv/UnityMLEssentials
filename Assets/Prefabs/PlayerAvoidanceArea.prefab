@@ -535,7 +535,7 @@ MonoBehaviour:
     VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 8bdabc0044f00e945aed9a1361509cf7, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 0921b7fcf424fc94e8079374fe515a24, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PlayerAvoidance
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1653192889820799482}
   targetSpeed: 10
-  maxDistance: 14
+  maxDistance: 15
 --- !u!1 &1653192891160048451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.23921569}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6862745}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
