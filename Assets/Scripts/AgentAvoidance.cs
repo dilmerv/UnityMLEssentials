@@ -1,4 +1,6 @@
-﻿using Unity.MLAgents.Sensors;
+﻿using TMPro;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
 using UnityEngine;
 
 public class AgentAvoidance : BaseAgent
@@ -12,6 +14,9 @@ public class AgentAvoidance : BaseAgent
     [SerializeField]
     private Vector3 rightPosition = Vector3.zero;
 
+    [SerializeField]
+    private TextMeshProUGUI score;
+
     private TargetMoving targetMoving;
 
     void Awake() 
@@ -22,6 +27,7 @@ public class AgentAvoidance : BaseAgent
     public override void OnEpisodeBegin()
     {
         transform.localPosition = idlePosition;
+        score.text = $"{this.GetCumulativeReward().ToString("F2")}";
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -32,17 +38,16 @@ public class AgentAvoidance : BaseAgent
 
     public override void OnActionReceived(float[] vectorAction)
     {
-        int direction = (int)vectorAction[0];
-
+        int direction = Mathf.FloorToInt(vectorAction[0]);
         switch(direction)
         {
             case 0:
                 transform.localPosition = idlePosition;
                 break;
-            case -1:
+            case 1:
                 transform.localPosition = leftPosition;
                 break;
-            case 1:
+            case 2:
                 transform.localPosition = rightPosition;
                 break;
         }
@@ -58,7 +63,7 @@ public class AgentAvoidance : BaseAgent
 
     public void GivePoints()
     {
-        AddReward(1.0f);
+        AddReward(Random.Range(1.0f, 3.0f));
         targetMoving.ResetTarget();
         EndEpisode();
         StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
