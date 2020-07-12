@@ -1,5 +1,5 @@
-﻿using DilmerGames.Core;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class TargetMoving : MonoBehaviour
 {
@@ -7,22 +7,30 @@ public class TargetMoving : MonoBehaviour
     private AgentAvoidance agent = null;
 
     [SerializeField]
-    private float targetSpeed = 0.5f;
+    [Range(0.5f, 25.0f)]
+    private float minSpeed = 5.0f;
 
     [SerializeField]
-    private float maxDistance = 10.0f;
+    [Range(5.0f, 150.0f)]
+    private float maxSpeed = 150.0f;
+
+    private float speed = 0;
+
+    [SerializeField]
+    private float maxDistance = -3.5f;
 
     private Vector3 originalPosition;
 
     void Awake()
     {
-        originalPosition = transform.localPosition;    
+        originalPosition = transform.localPosition;
+        speed = Random.Range(minSpeed, maxSpeed);
     }
 
     void Update()
     {
         // if we are beyond the max distance restart the position
-        if (transform.localPosition.z <= (originalPosition.z - maxDistance))
+        if (transform.localPosition.z <= maxDistance)
         {
             transform.localPosition = originalPosition;
         }
@@ -30,12 +38,13 @@ public class TargetMoving : MonoBehaviour
         {
             // move towards max distance
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y,
-                transform.localPosition.z - (Time.deltaTime * targetSpeed));
+                transform.localPosition.z - (Time.deltaTime * speed));
         }
     }
 
     public void ResetTarget()
     {
+        speed = Random.Range(minSpeed, maxSpeed);
         transform.localPosition = originalPosition;
         transform.localRotation = Quaternion.identity;
     }

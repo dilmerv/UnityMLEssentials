@@ -435,7 +435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653192889820799476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.01, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1653192889863045874}
@@ -535,7 +535,7 @@ MonoBehaviour:
     VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 0b9a8a50cb497f941af540b1aca8ed9f, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 6d21b05a3b5bd494692ddaf092ac8832, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PlayerAvoidance
@@ -838,8 +838,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1653192889820799482}
-  targetSpeed: 10
-  maxDistance: 15
+  minSpeed: 10
+  maxSpeed: 10
+  maxDistance: -3.5
 --- !u!1 &1653192891160048451
 GameObject:
   m_ObjectHideFlags: 0

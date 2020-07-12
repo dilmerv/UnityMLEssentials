@@ -5,7 +5,7 @@ using UnityEngine;
 public class AgentAvoidance : BaseAgent
 {
     [SerializeField]
-    private float speed = 10.0f;
+    private float speed = 50.0f;
 
     [SerializeField]
     private Vector3 idlePosition = Vector3.zero;
@@ -50,7 +50,10 @@ public class AgentAvoidance : BaseAgent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(this.transform.localPosition);
+        // 3 observations - x, y, z
+        sensor.AddObservation(transform.localPosition);
+
+        // 3 observations - x, y, z
         sensor.AddObservation(targetMoving.transform.localPosition);
     }
 
@@ -80,7 +83,7 @@ public class AgentAvoidance : BaseAgent
             punishCounter++;
         }
 
-        if (punishCounter > 2.0f)
+        if (punishCounter > 3.0f)
         {
             AddReward(-0.01f);
             punishCounter = 0;
