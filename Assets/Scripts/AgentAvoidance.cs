@@ -1,10 +1,12 @@
 ﻿using TMPro;
-using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
 public class AgentAvoidance : BaseAgent
 {
+    [SerializeField]
+    private float speed = 10.0f;
+
     [SerializeField]
     private Vector3 idlePosition = Vector3.zero;
 
@@ -29,7 +31,13 @@ public class AgentAvoidance : BaseAgent
 
     private float overallSteps = 0;
 
-    void Awake() 
+    private Vector3 moveTo = Vector3.zero;
+
+    private Vector3 prevPosition = Vector3.zero;
+
+    private int punishCounter;
+
+    void Awake()
     {
         targetMoving = transform.parent.GetComponentInChildren<TargetMoving>();
     }
@@ -37,6 +45,7 @@ public class AgentAvoidance : BaseAgent
     public override void OnEpisodeBegin()
     {
         transform.localPosition = idlePosition;
+        moveTo = prevPosition = idlePosition;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -47,20 +56,37 @@ public class AgentAvoidance : BaseAgent
 
     public override void OnActionReceived(float[] vectorAction)
     {
+        prevPosition = moveTo;
         int direction = Mathf.FloorToInt(vectorAction[0]);
-        switch(direction)
+        moveTo = idlePosition;
+
+        switch (direction)
         {
             case 0:
-                transform.localPosition = idlePosition;
+                moveTo = idlePosition;
                 break;
             case 1:
-                transform.localPosition = leftPosition;
+                moveTo = leftPosition;
                 break;
             case 2:
-                transform.localPosition = rightPosition;
+                moveTo = rightPosition;
                 break;
         }
+
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, moveTo, Time.fixedDeltaTime * speed);
+
+        if (prevPosition == moveTo)
+        {
+            punishCounter++;
+        }
+
+        if (punishCounter > 2.0f)
+        {
+            AddReward(-0.01f);
+            punishCounter = 0;
+        }
     }
+
 
     public void TakeAwayPoints()
     {

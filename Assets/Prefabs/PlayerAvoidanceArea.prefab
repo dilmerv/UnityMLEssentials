@@ -515,7 +515,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 12
   m_CollisionDetection: 0
 --- !u!114 &1653192889820799483
 MonoBehaviour:
@@ -535,7 +535,7 @@ MonoBehaviour:
     VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 0921b7fcf424fc94e8079374fe515a24, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 0b9a8a50cb497f941af540b1aca8ed9f, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PlayerAvoidance
@@ -561,6 +561,7 @@ MonoBehaviour:
   successMaterial: {fileID: 2100000, guid: d3ecebe7a5fbf8749b3d7e50288222cb, type: 2}
   failureMaterial: {fileID: 2100000, guid: 14b76b33ed8c3ea439ee004f8d4a90a7, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 152fe3fe560c163458a4ef826df27710, type: 2}
+  speed: 50
   idlePosition: {x: 0, y: 0.5, z: 0}
   leftPosition: {x: -3.2, y: 0.5, z: 0}
   rightPosition: {x: 3.2, y: 0.5, z: 0}
