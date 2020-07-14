@@ -11,8 +11,8 @@ public class CrossTheRoadCar : MonoBehaviour
     private float minSpeed = 5.0f;
 
     [SerializeField]
-    [Range(5.0f, 150.0f)]
-    private float maxSpeed = 150.0f;
+    [Range(0.5f, 25.0f)]
+    private float maxSpeed = 10.0f;
 
     private float speed = 0;
 

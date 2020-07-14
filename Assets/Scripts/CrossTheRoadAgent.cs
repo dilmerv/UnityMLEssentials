@@ -124,7 +124,7 @@ public class CrossTheRoadAgent : BaseAgent
 
     public void TakeAwayPoints()
     {
-        AddReward(-0.05f);
+        AddReward(-0.025f);
         
         UpdateStats();
 

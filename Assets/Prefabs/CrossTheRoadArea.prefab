@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 1562032060579386314}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Target
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,8 +434,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 0
-  minSpeed: 2
-  maxSpeed: 5
+  minSpeed: 1.6
+  maxSpeed: 2.1
   maxDistance: 18.064
 --- !u!1 &1562032060688465892
 GameObject:
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 1562032060818185869}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Target
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -761,8 +761,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 1
-  minSpeed: 2.4
-  maxSpeed: 10
+  minSpeed: 1.7
+  maxSpeed: 3.2
   maxDistance: -18
 --- !u!1 &1562032061114291942
 GameObject:
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 1562032061375456534}
   m_Layer: 0
   m_Name: Goal
-  m_TagString: Untagged
+  m_TagString: goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 1562032061492672967}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Target
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1207,8 +1207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 1
-  minSpeed: 5
-  maxSpeed: 10
+  minSpeed: 0.5
+  maxSpeed: 1.1
   maxDistance: -18
 --- !u!1 &1562032061725880475
 GameObject:
@@ -1375,7 +1375,7 @@ GameObject:
   - component: {fileID: 1562032061988231190}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Target
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1483,8 +1483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 0
-  minSpeed: 3
-  maxSpeed: 7
+  minSpeed: 1.2
+  maxSpeed: 2
   maxDistance: 18.064
 --- !u!1 &1562032062036464542
 GameObject:
@@ -1619,7 +1619,7 @@ MonoBehaviour:
     VectorActionSize: 04000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: e35d15db1ce411f40af05ca7d26cdbc3, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: CrossTheRoad
@@ -1777,10 +1777,11 @@ MonoBehaviour:
   m_DetectableTags:
   - wall
   - car
-  m_RaysPerDirection: 4
-  m_MaxRayDegrees: 90
+  - goal
+  m_RaysPerDirection: 10
+  m_MaxRayDegrees: 180
   m_SphereCastRadius: 1
-  m_RayLength: 20
+  m_RayLength: 40
   m_RayLayerMask:
     serializedVersion: 2
     m_Bits: 4294967291
@@ -1805,7 +1806,7 @@ GameObject:
   - component: {fileID: 1562032062264733385}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Target
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1913,8 +1914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 0
-  minSpeed: 6
-  maxSpeed: 12
+  minSpeed: 3
+  maxSpeed: 3.3
   maxDistance: 18.064
 --- !u!1 &2369094324981541069
 GameObject:
