@@ -434,8 +434,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 0
-  minSpeed: 6.8
-  maxSpeed: 34.4
+  minSpeed: 2
+  maxSpeed: 5
   maxDistance: 18.064
 --- !u!1 &1562032060688465892
 GameObject:
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carDirection: 1
   minSpeed: 2.4
-  maxSpeed: 36.2
+  maxSpeed: 10
   maxDistance: -18
 --- !u!1 &1562032061114291942
 GameObject:
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carDirection: 1
   minSpeed: 5
-  maxSpeed: 30
+  maxSpeed: 10
   maxDistance: -18
 --- !u!1 &1562032061725880475
 GameObject:
@@ -1483,8 +1483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 0
-  minSpeed: 5
-  maxSpeed: 10.6
+  minSpeed: 3
+  maxSpeed: 7
   maxDistance: 18.064
 --- !u!1 &1562032062036464542
 GameObject:
@@ -1913,8 +1913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDirection: 0
-  minSpeed: 6.8
-  maxSpeed: 34.4
+  minSpeed: 6
+  maxSpeed: 12
   maxDistance: 18.064
 --- !u!1 &2369094324981541069
 GameObject:
