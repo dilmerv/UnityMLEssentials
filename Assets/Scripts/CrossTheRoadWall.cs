@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
-public class CrossTheRoadGoal : MonoBehaviour
+public class CrossTheRoadWall : MonoBehaviour
 {
     private CrossTheRoadAgent agent = null;
 
@@ -14,8 +15,8 @@ public class CrossTheRoadGoal : MonoBehaviour
     {
         if (collider.transform.tag.ToLower() == "player")
         {
-            Debug.Log("Points earned as road was crossed");
-            agent.GivePoints();
+            Debug.Log("Collision with wall");
+            agent.TakeAwayPoints();
         }
     }
 }

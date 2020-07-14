@@ -29,6 +29,8 @@ public class CrossTheRoadAgent : BaseAgent
 
     private Vector3 originalPosition = Vector3.zero;
 
+    private Rigidbody agentRigidbody;
+
     private bool moveInProgress = false;
 
     private int direction = 0;
@@ -47,11 +49,14 @@ public class CrossTheRoadAgent : BaseAgent
     {
         goal = transform.parent.GetComponentInChildren<CrossTheRoadGoal>();
         originalPosition = transform.localPosition;
+        agentRigidbody = GetComponent<Rigidbody>();
     }
 
     public override void OnEpisodeBegin()
     {
         transform.localPosition = moveTo = originalPosition;
+        transform.localRotation = Quaternion.identity;
+        agentRigidbody.velocity = Vector3.zero;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -107,6 +112,16 @@ public class CrossTheRoadAgent : BaseAgent
         }
     }
 
+    public void GivePoints()
+    {
+        AddReward(1.0f);
+        
+        UpdateStats();
+
+        EndEpisode();
+        StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
+    }
+
     public void TakeAwayPoints()
     {
         AddReward(-0.01f);
@@ -114,6 +129,7 @@ public class CrossTheRoadAgent : BaseAgent
         UpdateStats();
 
         EndEpisode();
+
         StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
     }
 
@@ -124,16 +140,6 @@ public class CrossTheRoadAgent : BaseAgent
         rewardValue.text = $"{overallReward.ToString("F2")}";
         episodesValue.text = $"{this.CompletedEpisodes}";
         stepValue.text = $"{overallSteps}";
-    }
-
-    public void GivePoints()
-    {
-        AddReward(1.0f);
-        
-        UpdateStats();
-
-        EndEpisode();
-        StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
     }
 
     public override void Heuristic(float[] actionsOut)

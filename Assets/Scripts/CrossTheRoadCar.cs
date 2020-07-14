@@ -4,9 +4,6 @@ using UnityEngine.SocialPlatforms;
 public class CrossTheRoadCar : MonoBehaviour
 {
     [SerializeField]
-    private AgentAvoidance agent = null;
-
-    [SerializeField]
     private CarDirection carDirection = CarDirection.North;
 
     [SerializeField]
@@ -22,6 +19,8 @@ public class CrossTheRoadCar : MonoBehaviour
     [SerializeField]
     private float maxDistance = -3.5f;
 
+    private CrossTheRoadAgent agent = null;
+
     private Vector3 originalPosition;
 
     public enum CarDirection
@@ -32,7 +31,13 @@ public class CrossTheRoadCar : MonoBehaviour
 
     void Awake()
     {
+        // cache agent
+        agent = transform.parent.GetComponentInChildren<CrossTheRoadAgent>();
+
+        // cache position
         originalPosition = transform.localPosition;
+
+        // randomize car speed
         speed = Random.Range(minSpeed, maxSpeed);
     }
 
@@ -43,6 +48,7 @@ public class CrossTheRoadCar : MonoBehaviour
             transform.localPosition.x >= maxDistance && carDirection == CarDirection.South)
         {
             transform.localPosition = originalPosition;
+            transform.localRotation = Quaternion.identity;
         }
         else
         {

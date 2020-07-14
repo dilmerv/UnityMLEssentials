@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Target
   - Floor
+  - wall
+  - car
   layers:
   - Default
   - TransparentFX
