@@ -9,6 +9,7 @@ TagManager:
   - wall
   - car
   - goal
+  - tree
   layers:
   - Default
   - TransparentFX
