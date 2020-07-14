@@ -68,9 +68,9 @@ public class CrossTheRoadAgent : BaseAgent
         if (!moveInProgress)
             return;
 
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, moveTo, 0.01f);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, moveTo, Time.deltaTime * speed);
 
-        if (Vector3.Distance(transform.localPosition, moveTo) <= 0.0001f)
+        if (Vector3.Distance(transform.localPosition, moveTo) <= 0.00001f)
         {
             moveInProgress = false;
         }
@@ -139,10 +139,7 @@ public class CrossTheRoadAgent : BaseAgent
     public override void Heuristic(float[] actionsOut)
     {
         //idle
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            actionsOut[0] = 0;
-        }
+        actionsOut[0] = 0;
 
         //move left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
