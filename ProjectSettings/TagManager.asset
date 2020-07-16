@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Target
   - Floor
+  - wall
+  - car
+  - goal
+  - tree
   layers:
   - Default
   - TransparentFX
