@@ -6,9 +6,9 @@ PhysicMaterial:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CarPhysics
-  dynamicFriction: 0.5
-  staticFriction: 0
+  m_Name: RoadPhysics 1
+  dynamicFriction: 0.3
+  staticFriction: 0.2
   bounciness: 0
   frictionCombine: 0
   bounceCombine: 0

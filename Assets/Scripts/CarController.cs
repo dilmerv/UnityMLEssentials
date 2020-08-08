@@ -15,6 +15,9 @@ public class CarController : Singleton<CarController>
     private float minSpeedBeforeTorque = 0.3f;
 
     [SerializeField]
+    private float minSpeedBeforeIdle = 0.2f;
+
+    [SerializeField]
     private Animator carAnimator;
 
     [SerializeField]
@@ -38,8 +41,7 @@ public class CarController : Singleton<CarController>
 
     void Update() 
     {
-        //Debug.Log(carRigidbody.velocity);
-        if(carRigidbody.velocity == Vector3.zero)
+        if(carRigidbody.velocity.magnitude <= minSpeedBeforeIdle)
         {
             ApplyAnimatorState(Direction.Idle);
         }    
@@ -47,6 +49,7 @@ public class CarController : Singleton<CarController>
     
     void FixedUpdate()
     {
+
         if(Input.GetKey(KeyCode.UpArrow))
         {
             ApplyAnimatorState(Direction.MoveForward);
@@ -97,16 +100,10 @@ public class CarController : Singleton<CarController>
                 carAnimator.SetBool(Direction.TurnRight.ToString(), false);
             break;
             case Direction.TurnLeft:
-                carAnimator.SetBool(Direction.MoveBackward.ToString(), false);
-                carAnimator.SetBool(Direction.MoveForward.ToString(), false);
-                carAnimator.SetBool(Direction.Idle.ToString(), false);
                 carAnimator.SetBool(Direction.TurnRight.ToString(), false);
             break;
             case Direction.TurnRight:
-                carAnimator.SetBool(Direction.MoveBackward.ToString(), false);
-                carAnimator.SetBool(Direction.MoveForward.ToString(), false);
                 carAnimator.SetBool(Direction.TurnLeft.ToString(), false);
-                carAnimator.SetBool(Direction.Idle.ToString(), false);
             break;
         }
     }
