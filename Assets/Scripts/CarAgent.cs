@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.MLAgents;
+using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using static CarController;
@@ -11,14 +12,20 @@ public class CarAgent : BaseAgent
     private GameObject goal;
 
     private Vector3 originalPosition;
+
+    private BehaviorParameters behaviorParameters;
     
     void Awake()
     {
+        Debug.Log("Test");
         originalPosition = transform.localPosition;
+        behaviorParameters = GetComponent<BehaviorParameters>();
     }
 
     public override void OnEpisodeBegin()
     {
+        // important to set car to automonous during default behavior
+        CarController.Instance.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
         transform.localPosition = originalPosition;
         transform.localRotation = Quaternion.identity;
         CarController.Instance.CarRigidbody.velocity = Vector3.zero;
@@ -36,6 +43,7 @@ public class CarAgent : BaseAgent
     public override void OnActionReceived(float[] vectorAction)
     {
         var direction = Mathf.FloorToInt(vectorAction[0]);
+        Debug.Log(direction);
 
         switch (direction)
         {
