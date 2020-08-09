@@ -10,6 +10,9 @@ public class CarGoal : MonoBehaviour
     [SerializeField]
     private float goalReward = 0.1f;
 
+    // to avoid AI from cheating ;)
+    public bool HasCarUsedIt { get; set; } = false;
+
     public enum GoalType
     {
         Milestone,
@@ -24,8 +27,9 @@ public class CarGoal : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.transform.tag.ToLower() == "player")
+        if (collider.transform.tag.ToLower() == "player" && !HasCarUsedIt)
         {
+            HasCarUsedIt = true;
             if(goalType == GoalType.Milestone)
                 agent.GivePoints(goalReward);
             else

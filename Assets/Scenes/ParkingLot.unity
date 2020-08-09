@@ -299,6 +299,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -527,6 +532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParkingLotArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
@@ -884,6 +894,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1205,6 +1220,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1433,6 +1453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParkingLotArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
@@ -1825,6 +1850,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2053,6 +2083,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParkingLotArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
@@ -2283,6 +2318,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2342,16 +2382,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3808286179326856523, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_Name
-      value: Barrier
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618270689956215683, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_Name
-      value: Barrier
-      objectReference: {fileID: 0}
     - target: {fileID: 8208582798679284309, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2411,6 +2441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParkingLotArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707273, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: MaxStep
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}

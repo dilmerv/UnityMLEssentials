@@ -26,6 +26,18 @@ public class CarAgent : BaseAgent
 
     public override void OnEpisodeBegin()
     {
+        ResetParkingLotArea();
+    }
+
+    private void ResetParkingLotArea()
+    {
+        // reset car goals
+        var carGoals = transform.parent.GetComponentsInChildren<CarGoal>();
+        foreach (CarGoal goal in carGoals)
+        {
+            goal.HasCarUsedIt = false;
+        }
+
         // important to set car to automonous during default behavior
         carController.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
         transform.localPosition = originalPosition;
@@ -33,7 +45,6 @@ public class CarAgent : BaseAgent
         carController.CarRigidbody.velocity = Vector3.zero;
     }
 
-    
     void Update()
     {
         if(transform.localPosition.y <= 0)
@@ -49,6 +60,9 @@ public class CarAgent : BaseAgent
 
         // 3 observations - x, y, z
         sensor.AddObservation(goal.transform.localPosition);
+
+        // 3 observations - x, y, z
+        sensor.AddObservation(carController.CarRigidbody.velocity);
     }
     
     public override void OnActionReceived(float[] vectorAction)
@@ -78,6 +92,7 @@ public class CarAgent : BaseAgent
     public void GivePoints(float amount = 1.0f, bool isFinal = false)
     {
         AddReward(amount);
+
         if(isFinal)
         {
             EndEpisode();
@@ -87,7 +102,8 @@ public class CarAgent : BaseAgent
 
     public void TakeAwayPoints()
     {
-        AddReward(-0.025f);
+        AddReward(-0.001f);
+        
         EndEpisode();
         StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
     }
