@@ -65,13 +65,13 @@ public class CarController : Singleton<CarController>
             CarRigidbody.AddForce(-transform.forward * speed, ForceMode.Acceleration);
         }
 
-        if((Input.GetKey(KeyCode.LeftArrow) && canApplyTorque()) || (CurrentDirection == Direction.TurnLeft && canApplyTorque() && IsAutonomous))
+        if((Input.GetKey(KeyCode.LeftArrow) && canApplyTorque()) || (CurrentDirection == Direction.TurnLeft && IsAutonomous))
         {
             ApplyAnimatorState(Direction.TurnLeft);
             CarRigidbody.AddTorque(transform.up * -torque);
         }
 
-        if(Input.GetKey(KeyCode.RightArrow) && canApplyTorque() || (CurrentDirection == Direction.TurnRight && canApplyTorque() && IsAutonomous))
+        if(Input.GetKey(KeyCode.RightArrow) && canApplyTorque() || (CurrentDirection == Direction.TurnRight && IsAutonomous))
         {
             ApplyAnimatorState(Direction.TurnRight);
             CarRigidbody.AddTorque(transform.up * torque);

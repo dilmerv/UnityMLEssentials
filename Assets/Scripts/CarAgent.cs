@@ -14,21 +14,32 @@ public class CarAgent : BaseAgent
     private Vector3 originalPosition;
 
     private BehaviorParameters behaviorParameters;
+
+    private CarController carController;
     
     void Awake()
     {
-        Debug.Log("Test");
         originalPosition = transform.localPosition;
         behaviorParameters = GetComponent<BehaviorParameters>();
+        carController = GetComponent<CarController>();
     }
 
     public override void OnEpisodeBegin()
     {
         // important to set car to automonous during default behavior
-        CarController.Instance.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
+        carController.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
         transform.localPosition = originalPosition;
         transform.localRotation = Quaternion.identity;
-        CarController.Instance.CarRigidbody.velocity = Vector3.zero;
+        carController.CarRigidbody.velocity = Vector3.zero;
+    }
+
+    
+    void Update()
+    {
+        if(transform.localPosition.y <= 0)
+        {
+            TakeAwayPoints();
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -43,45 +54,47 @@ public class CarAgent : BaseAgent
     public override void OnActionReceived(float[] vectorAction)
     {
         var direction = Mathf.FloorToInt(vectorAction[0]);
-        Debug.Log(direction);
-
+        Debug.Log("Direction: " + direction);
         switch (direction)
         {
             case 0: // idle
-                CarController.Instance.CurrentDirection = Direction.Idle;
+                carController.CurrentDirection = Direction.Idle;
                 break;
             case 1: // forward
-                CarController.Instance.CurrentDirection = Direction.MoveForward;
+                carController.CurrentDirection = Direction.MoveForward;
                 break;
             case 2: // backward
-                CarController.Instance.CurrentDirection = Direction.MoveBackward;
+                carController.CurrentDirection = Direction.MoveBackward;
                 break;
             case 3: // turn left
-                CarController.Instance.CurrentDirection = Direction.TurnLeft;
+                carController.CurrentDirection = Direction.TurnLeft;
                 break;
             case 4: // turn right
-                CarController.Instance.CurrentDirection = Direction.TurnRight;
+                carController.CurrentDirection = Direction.TurnRight;
                 break;
         }
     }
 
-    public void GivePoints()
+    public void GivePoints(float amount = 1.0f, bool isFinal = false)
     {
-        AddReward(1.0f);
-        EndEpisode();
-        StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
+        AddReward(amount);
+        if(isFinal)
+        {
+            EndEpisode();
+            StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
+        }
     }
 
     public void TakeAwayPoints()
     {
         AddReward(-0.025f);
         EndEpisode();
+        StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
     }
 
     public override void Heuristic(float[] actionsOut)
     {
         actionsOut[0] = 0;
-        CarController.Instance.CurrentDirection = Direction.Idle;
 
         if(Input.GetKey(KeyCode.UpArrow))
         {
@@ -93,12 +106,12 @@ public class CarAgent : BaseAgent
             actionsOut[0] = 2;
         }
 
-        if(Input.GetKey(KeyCode.LeftArrow) && CarController.Instance.canApplyTorque())
+        if(Input.GetKey(KeyCode.LeftArrow) && carController.canApplyTorque())
         {
             actionsOut[0] = 3;
         }
 
-        if(Input.GetKey(KeyCode.RightArrow) && CarController.Instance.canApplyTorque())
+        if(Input.GetKey(KeyCode.RightArrow) && carController.canApplyTorque())
         {
             actionsOut[0] = 4;
         }
