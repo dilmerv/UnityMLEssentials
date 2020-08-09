@@ -20,10 +20,11 @@ public class CarController : Singleton<CarController>
     [SerializeField]
     private Animator carAnimator;
 
-    [SerializeField]
-    private Direction currentDirection = Direction.Idle;
+    public Direction CurrentDirection { get; set; } = Direction.Idle;
 
-    private Rigidbody carRigidbody;
+    public bool IsAutonomous { get; set; } = false;
+
+    public Rigidbody CarRigidbody { get; set; }
 
     public enum Direction
     {
@@ -36,42 +37,44 @@ public class CarController : Singleton<CarController>
 
     void Awake()
     {
-        carRigidbody = GetComponent<Rigidbody>();
+        CarRigidbody = GetComponent<Rigidbody>();
     }
 
     void Update() 
     {
-        if(carRigidbody.velocity.magnitude <= minSpeedBeforeIdle)
+        if(CarRigidbody.velocity.magnitude <= minSpeedBeforeIdle)
         {
+            CurrentDirection = Direction.Idle;
             ApplyAnimatorState(Direction.Idle);
         }    
     }
     
-    void FixedUpdate()
-    {
+    void FixedUpdate() => ApplyMovement();
 
-        if(Input.GetKey(KeyCode.UpArrow))
+    public void ApplyMovement()
+    {
+        if(Input.GetKey(KeyCode.UpArrow) || (CurrentDirection == Direction.MoveForward && IsAutonomous))
         {
             ApplyAnimatorState(Direction.MoveForward);
-            carRigidbody.AddForce(transform.forward * speed, ForceMode.Acceleration);
+            CarRigidbody.AddForce(transform.forward * speed, ForceMode.Acceleration);
         }
 
-        if(Input.GetKey(KeyCode.DownArrow))
+        if(Input.GetKey(KeyCode.DownArrow) || (CurrentDirection == Direction.MoveBackward && IsAutonomous))
         {
             ApplyAnimatorState(Direction.MoveBackward);
-            carRigidbody.AddForce(-transform.forward * speed, ForceMode.Acceleration);
+            CarRigidbody.AddForce(-transform.forward * speed, ForceMode.Acceleration);
         }
 
-        if(Input.GetKey(KeyCode.LeftArrow) && canApplyTorque())
+        if((Input.GetKey(KeyCode.LeftArrow) && canApplyTorque()) || (CurrentDirection == Direction.TurnLeft && canApplyTorque() && IsAutonomous))
         {
             ApplyAnimatorState(Direction.TurnLeft);
-            carRigidbody.AddTorque(transform.up * -torque);
+            CarRigidbody.AddTorque(transform.up * -torque);
         }
 
-        if(Input.GetKey(KeyCode.RightArrow) && canApplyTorque())
+        if(Input.GetKey(KeyCode.RightArrow) && canApplyTorque() || (CurrentDirection == Direction.TurnRight && canApplyTorque() && IsAutonomous))
         {
             ApplyAnimatorState(Direction.TurnRight);
-            carRigidbody.AddTorque(transform.up * torque);
+            CarRigidbody.AddTorque(transform.up * torque);
         }
     }
 
@@ -108,9 +111,9 @@ public class CarController : Singleton<CarController>
         }
     }
 
-    bool canApplyTorque()
+    public bool canApplyTorque()
     {
-        Vector3 velocity = carRigidbody.velocity;
+        Vector3 velocity = CarRigidbody.velocity;
         return Mathf.Abs(velocity.x) >= minSpeedBeforeTorque || Mathf.Abs(velocity.z) >= minSpeedBeforeTorque;
     }
 }

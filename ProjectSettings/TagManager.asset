@@ -10,7 +10,7 @@ TagManager:
   - car
   - goal
   - tree
-  - Barrier
+  - barrier
   layers:
   - Default
   - TransparentFX

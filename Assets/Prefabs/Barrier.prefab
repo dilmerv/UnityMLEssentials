@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5215685060633446414}
   m_Layer: 0
   m_Name: Barrier
-  m_TagString: Barrier
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
