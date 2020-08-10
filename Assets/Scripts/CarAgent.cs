@@ -103,7 +103,7 @@ public class CarAgent : BaseAgent
     {
         StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
 
-        AddReward(-0.001f);
+        AddReward(-0.01f);
         
         EndEpisode();
     }
