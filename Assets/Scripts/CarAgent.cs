@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.MLAgents;
 using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
@@ -66,7 +64,7 @@ public class CarAgent : BaseAgent
     public override void OnActionReceived(float[] vectorAction)
     {
         var direction = Mathf.FloorToInt(vectorAction[0]);
-        Debug.Log("Direction: " + direction);
+
         switch (direction)
         {
             case 0: // idle
@@ -87,23 +85,32 @@ public class CarAgent : BaseAgent
         }
     }
 
-    public void GivePoints(float amount = 1.0f, bool isFinal = false)
+    public IEnumerator GivePoints(float amount = 1.0f, bool isFinal = false, float waitFor = 1.0f)
     {
         AddReward(amount);
 
         if(isFinal)
         {
-            EndEpisode();
             StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
+
+            // during final goal I like to wait x seconds to make it more realistic
+            yield return new WaitForSeconds(waitFor);
+
+            EndEpisode();
         }
+        yield return null;
     }
 
-    public void TakeAwayPoints()
+    public IEnumerator TakeAwayPoints(float waitFor = 0)
     {
+        StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
+        
+        // during final goal I like to wait x seconds to make it more realistic
+        yield return new WaitForSeconds(waitFor);
+
         AddReward(-0.001f);
         
         EndEpisode();
-        StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
     }
 
     public override void Heuristic(float[] actionsOut)

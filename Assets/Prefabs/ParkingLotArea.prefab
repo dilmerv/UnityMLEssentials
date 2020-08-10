@@ -1511,7 +1511,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &8208582799193707274
 MonoBehaviour:
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4169d94b7584afaaa0cb069e10a1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 25
   torque: 25
   minSpeedBeforeTorque: 0.1
   minSpeedBeforeIdle: 1
@@ -2642,15 +2642,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bbc73fc330e07c4bafc7099fe33b4bd, type: 3}
---- !u!4 &8134892127432641178 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4698212953554746, guid: 1bbc73fc330e07c4bafc7099fe33b4bd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8139202676095350176}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &8189260127737415044 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95236430617210916, guid: 1bbc73fc330e07c4bafc7099fe33b4bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 8139202676095350176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8134892127432641178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4698212953554746, guid: 1bbc73fc330e07c4bafc7099fe33b4bd,
     type: 3}
   m_PrefabInstance: {fileID: 8139202676095350176}
   m_PrefabAsset: {fileID: 0}

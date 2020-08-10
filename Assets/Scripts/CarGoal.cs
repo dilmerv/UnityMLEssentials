@@ -27,9 +27,13 @@ public class CarGoal : MonoBehaviour
 
             HasCarUsedIt = true;
             if(goalType == GoalType.Milestone)
-                agent.GivePoints(goalReward);
+            {
+                StartCoroutine(agent.GivePoints(goalReward));
+            }
             else
-                agent.GivePoints(goalReward, true);
+            {
+                StartCoroutine(agent.GivePoints(goalReward, true, 0.5f));
+            }
         }
     }
 }

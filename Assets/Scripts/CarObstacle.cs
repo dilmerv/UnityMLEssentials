@@ -27,7 +27,15 @@ public class CarObstacle : MonoBehaviour
     {
         if (collider.transform.tag.ToLower() == "player")
         {
-            agent.TakeAwayPoints();
+            StartCoroutine(agent.TakeAwayPoints());
+        }
+    }
+
+    void OnCollisionEnter(Collision other) 
+    {
+        if (other.transform.tag.ToLower() == "player")
+        {
+            StartCoroutine(agent.TakeAwayPoints(0.5f));
         }
     }
 }
