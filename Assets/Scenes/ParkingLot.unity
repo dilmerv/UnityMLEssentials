@@ -1484,6 +1484,11 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8208582799193707274, guid: 433de58ff5320b4489fa2ff704035b06,
+        type: 3}
+      propertyPath: speed
+      value: 26
+      objectReference: {fileID: 0}
     - target: {fileID: 8481879139731742975, guid: 433de58ff5320b4489fa2ff704035b06,
         type: 3}
       propertyPath: m_textInfo.characterCount
