@@ -1526,7 +1526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  torque: 25
+  torque: 30
   minSpeedBeforeTorque: 0.1
   minSpeedBeforeIdle: 1
   carAnimator: {fileID: 8189260127737415044}
