@@ -19,16 +19,12 @@ public class CarGoal : MonoBehaviour
         FinalDestination
     }
 
-    void Awake()
-    {
-        // cache agent
-        agent = transform.parent.GetComponentInChildren<CarAgent>();
-    }
-
     void OnTriggerEnter(Collider collider)
     {
         if (collider.transform.tag.ToLower() == "player" && !HasCarUsedIt)
         {
+            agent = transform.parent.GetComponentInChildren<CarAgent>();
+
             HasCarUsedIt = true;
             if(goalType == GoalType.Milestone)
                 agent.GivePoints(goalReward);

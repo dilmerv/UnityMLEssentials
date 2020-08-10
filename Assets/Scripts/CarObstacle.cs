@@ -13,6 +13,8 @@ public class CarObstacle : MonoBehaviour
     [SerializeField]
     private CarObstacleType carObstacleType = CarObstacleType.Barrier;
 
+    public CarObstacleType CarObstacleTypeValue { get { return this.carObstacleType; } }
+
     private CarAgent agent = null;
 
     void Awake()
