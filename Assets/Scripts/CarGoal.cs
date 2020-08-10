@@ -10,6 +10,9 @@ public class CarGoal : MonoBehaviour
     [SerializeField]
     private float goalReward = 0.1f;
 
+    [SerializeField]
+    private float goalMinRotation = 10.0f;
+
     // to avoid AI from cheating ;)
     public bool HasCarUsedIt { get; set; } = false;
 
@@ -25,14 +28,24 @@ public class CarGoal : MonoBehaviour
         {
             agent = transform.parent.GetComponentInChildren<CarAgent>();
 
-            HasCarUsedIt = true;
             if(goalType == GoalType.Milestone)
             {
-                StartCoroutine(agent.GivePoints(goalReward));
+                HasCarUsedIt = true;
+                agent.GivePoints(goalReward);
             }
             else
             {
-                StartCoroutine(agent.GivePoints(goalReward, true, 0.5f));
+                //Debug.Log(Mathf.Abs(agent.transform.rotation.y));
+                // this will ensure the car tries to align when parking
+                if(Mathf.Abs(agent.transform.rotation.y) <= goalMinRotation)
+                {
+                    HasCarUsedIt = true;
+                    agent.GivePoints(goalReward, true);
+                }
+                else
+                {
+                    agent.TakeAwayPoints();
+                }
             }
         }
     }

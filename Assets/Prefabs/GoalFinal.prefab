@@ -59,3 +59,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalType: 1
   goalReward: 2
+  goalMinRotation: 0.1

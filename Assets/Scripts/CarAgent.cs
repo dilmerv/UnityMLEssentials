@@ -32,7 +32,7 @@ public class CarAgent : BaseAgent
     private void ResetParkingLotArea()
     {
         // reset which cars show or not show
-        carSpots.Setup();
+        StartCoroutine(carSpots.Setup());
         
         // important to set car to automonous during default behavior
         carController.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
@@ -43,6 +43,8 @@ public class CarAgent : BaseAgent
 
     void Update()
     {
+        //Debug.Log(transform.rotation);
+
         if(transform.localPosition.y <= 0)
         {
             TakeAwayPoints();
@@ -85,7 +87,7 @@ public class CarAgent : BaseAgent
         }
     }
 
-    public IEnumerator GivePoints(float amount = 1.0f, bool isFinal = false, float waitFor = 1.0f)
+    public void GivePoints(float amount = 1.0f, bool isFinal = false)
     {
         AddReward(amount);
 
@@ -93,20 +95,13 @@ public class CarAgent : BaseAgent
         {
             StartCoroutine(SwapGroundMaterial(successMaterial, 0.5f));
 
-            // during final goal I like to wait x seconds to make it more realistic
-            yield return new WaitForSeconds(waitFor);
-
             EndEpisode();
         }
-        yield return null;
     }
 
-    public IEnumerator TakeAwayPoints(float waitFor = 0)
+    public void TakeAwayPoints()
     {
         StartCoroutine(SwapGroundMaterial(failureMaterial, 0.5f));
-        
-        // during final goal I like to wait x seconds to make it more realistic
-        yield return new WaitForSeconds(waitFor);
 
         AddReward(-0.001f);
         

@@ -34,14 +34,15 @@ public class CarSpots : MonoBehaviour
         foreach(CarObstacle obstacle in parkedCars)
         {
             cachedParkedCars.Add(obstacle.GetInstanceID(), 
-            new CachedCar {
+            new CachedCar 
+            {
                 Position = obstacle.transform.position,
                 Rotation = obstacle.transform.rotation
             });
         }
     }
 
-    public void Setup()
+    public IEnumerator Setup(float delay = 0.5f)
     {
         int parkedCarsCount = parkedCars.Count();
         int carTohide = Random.Range(0, parkedCarsCount);
@@ -68,6 +69,9 @@ public class CarSpots : MonoBehaviour
                 CarGoal.HasCarUsedIt = false;
                 carGoal.transform.parent = transform.parent;
                 carGoal.transform.position = car.gameObject.transform.position;
+
+                yield return new WaitForSeconds(delay);
+
             }    
             else 
             {
