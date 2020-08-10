@@ -36,20 +36,19 @@ public class CarAgent : BaseAgent
 
     private void ResetParkingLotArea()
     {
-        // reset which cars show or not show
-        carSpots.Setup();
-        
         // important to set car to automonous during default behavior
         carController.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
         transform.localPosition = originalPosition;
         transform.localRotation = Quaternion.identity;
         carController.CarRigidbody.velocity = Vector3.zero;
+        carController.CarRigidbody.angularVelocity = Vector3.zero;
+
+        // reset which cars show or not show
+        carSpots.Setup();
     }
 
     void Update()
     {
-        //Debug.Log(transform.rotation);
-
         if(transform.localPosition.y <= 0)
         {
             TakeAwayPoints();
@@ -58,13 +57,12 @@ public class CarAgent : BaseAgent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        // 3 observations - x, y, z
         sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(transform.rotation);
 
-        // 3 observations - x, y, z
-        sensor.AddObservation(carSpots.CarGoal.transform.localPosition);
+        sensor.AddObservation(carSpots.CarGoal.transform.position);
+        sensor.AddObservation(carSpots.CarGoal.transform.rotation);
 
-        // 3 observations - x, y, z
         sensor.AddObservation(carController.CarRigidbody.velocity);
     }
     

@@ -189,11 +189,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
 --- !u!1001 &401095425
@@ -262,11 +257,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParkingLotArea
-      objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
@@ -464,11 +454,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
 --- !u!1 &705507993
@@ -630,11 +615,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
 --- !u!1001 &947279473
@@ -703,11 +683,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParkingLotArea
-      objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
@@ -940,11 +915,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
 --- !u!1001 &1729476582
@@ -1014,11 +984,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingLotArea
       objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
 --- !u!1001 &1876502516
@@ -1087,16 +1052,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParkingLotArea
-      objectReference: {fileID: 0}
-    - target: {fileID: 8208582798679284310, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8208582799193707279, guid: 433de58ff5320b4489fa2ff704035b06,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433de58ff5320b4489fa2ff704035b06, type: 3}
