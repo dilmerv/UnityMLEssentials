@@ -21,7 +21,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.51
+    value: 0.15
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -120,10 +120,10 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.42
+    value: 0.8
   contrast:
     overrideState: 1
-    value: 0
+    value: 13
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -155,7 +155,7 @@ MonoBehaviour:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
-    overrideState: 0
+    overrideState: 1
     value: {x: 1, y: 1, z: 1, w: 0}
   gain:
     overrideState: 0
@@ -1391,7 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -1468,7 +1468,7 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.531
+    value: 0.295
   smoothness:
     overrideState: 0
     value: 0.2
@@ -1503,7 +1503,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 4
+    value: 3.83
   threshold:
     overrideState: 0
     value: 1

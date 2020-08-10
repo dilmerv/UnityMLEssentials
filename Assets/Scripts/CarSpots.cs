@@ -42,7 +42,7 @@ public class CarSpots : MonoBehaviour
         }
     }
 
-    public IEnumerator Setup(float delay = 0.5f)
+    public void Setup()
     {
         int parkedCarsCount = parkedCars.Count();
         int carTohide = Random.Range(0, parkedCarsCount);
@@ -69,9 +69,6 @@ public class CarSpots : MonoBehaviour
                 CarGoal.HasCarUsedIt = false;
                 carGoal.transform.parent = transform.parent;
                 carGoal.transform.position = car.gameObject.transform.position;
-
-                yield return new WaitForSeconds(delay);
-
             }    
             else 
             {

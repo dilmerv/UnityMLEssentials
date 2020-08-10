@@ -24,6 +24,11 @@ public class CarAgent : BaseAgent
         carSpots = transform.parent.GetComponentInChildren<CarSpots>();
     }
 
+    void Start() 
+    {
+        ResetParkingLotArea();    
+    }
+
     public override void OnEpisodeBegin()
     {
         ResetParkingLotArea();
@@ -32,7 +37,7 @@ public class CarAgent : BaseAgent
     private void ResetParkingLotArea()
     {
         // reset which cars show or not show
-        StartCoroutine(carSpots.Setup());
+        carSpots.Setup();
         
         // important to set car to automonous during default behavior
         carController.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
