@@ -88,6 +88,8 @@ public class CarAgent : BaseAgent
                 carController.CurrentDirection = Direction.TurnRight;
                 break;
         }
+
+        AddReward(-1f / MaxStep);
     }
 
     public void GivePoints(float amount = 1.0f, bool isFinal = false)

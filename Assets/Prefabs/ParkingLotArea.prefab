@@ -1377,6 +1377,7 @@ GameObject:
   - component: {fileID: 8208582799193707272}
   - component: {fileID: 8208582799193707273}
   - component: {fileID: 8208582799193707319}
+  - component: {fileID: 2823132542606305681}
   - component: {fileID: 8208582799193707318}
   m_Layer: 0
   m_Name: CarAgent
@@ -1488,7 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4169d94b7584afaaa0cb069e10a1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 2
   torque: 20
   minSpeedBeforeTorque: 0.1
   minSpeedBeforeIdle: 1
@@ -1511,7 +1512,7 @@ MonoBehaviour:
     VectorActionSize: 04000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: c605997dfcabf8f4ca3ba9bba9927966, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: CarBehavior
@@ -1549,7 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor
+  m_SensorName: PivotSensor
   m_DetectableTags:
   - car
   - goal
@@ -1565,8 +1566,38 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 1, b: 1, a: 1}
   rayMissColor: {r: 1, g: 0, b: 0, a: 1}
-  m_StartVerticalOffset: 0.2
+  m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
+--- !u!114 &2823132542606305681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208582799193707264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: TopSensor
+  m_DetectableTags:
+  - car
+  - goal
+  - barrier
+  - tree
+  m_RaysPerDirection: 5
+  m_MaxRayDegrees: 90
+  m_SphereCastRadius: 0.2
+  m_RayLength: 30
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 1, b: 1, a: 1}
+  rayMissColor: {r: 1, g: 0, b: 0, a: 1}
+  m_StartVerticalOffset: 3.6
+  m_EndVerticalOffset: -1.5
 --- !u!114 &8208582799193707318
 MonoBehaviour:
   m_ObjectHideFlags: 0

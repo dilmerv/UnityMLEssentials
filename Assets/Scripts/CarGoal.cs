@@ -11,6 +11,9 @@ public class CarGoal : MonoBehaviour
     private float goalReward = 0.1f;
 
     [SerializeField]
+    private bool enforceGoalMinRotation = false;
+
+    [SerializeField]
     private float goalMinRotation = 10.0f;
 
     // to avoid AI from cheating ;)
@@ -35,9 +38,8 @@ public class CarGoal : MonoBehaviour
             }
             else
             {
-                //Debug.Log(Mathf.Abs(agent.transform.rotation.y));
                 // this will ensure the car tries to align when parking
-                if(Mathf.Abs(agent.transform.rotation.y) <= goalMinRotation)
+                if(Mathf.Abs(agent.transform.rotation.y) <= goalMinRotation || !enforceGoalMinRotation)
                 {
                     HasCarUsedIt = true;
                     agent.GivePoints(goalReward, true);
