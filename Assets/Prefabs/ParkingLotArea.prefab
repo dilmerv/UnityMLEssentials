@@ -1512,7 +1512,7 @@ MonoBehaviour:
     VectorActionSize: 04000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: c605997dfcabf8f4ca3ba9bba9927966, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 6ece0836c29361f41bb37a1ecf8a7272, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: CarBehavior
