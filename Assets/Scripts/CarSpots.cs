@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static CarObstacle;
@@ -16,6 +15,9 @@ public class CarSpots : MonoBehaviour
 
     [SerializeField]
     private GameObject carGoalPrefab = null;
+
+    [SerializeField]
+    private int howManyCarsTohide = 1;
 
     private IEnumerable<CarObstacle> parkedCars;
 
@@ -42,10 +44,27 @@ public class CarSpots : MonoBehaviour
         }
     }
 
+    private List<int> GetRandomNumsToHideCars(int howMany)
+    {
+        List<int> carsToHide = new List<int>();
+
+        for(int i = 0; i < howMany; i++)
+        {
+            while(carsToHide.Count < howMany)
+            {
+                int carTohide = Random.Range(0, parkedCars.Count());
+                if(!carsToHide.Contains(carTohide))
+                {
+                    carsToHide.Add(carTohide);
+                }
+            }
+        }
+        return carsToHide;
+    }
+
     public void Setup()
     {
-        int parkedCarsCount = parkedCars.Count();
-        int carTohide = Random.Range(0, parkedCarsCount);
+        List<int> carsToHide = GetRandomNumsToHideCars(howManyCarsTohide);
         int carCounter = 0;
 
         foreach (var car in parkedCars)
@@ -55,7 +74,7 @@ public class CarSpots : MonoBehaviour
             car.GetComponent<Rigidbody>().velocity = Vector3.zero;
             car.transform.SetPositionAndRotation(cachedParkedCar.Position, cachedParkedCar.Rotation);
 
-            if(carCounter == carTohide)
+            if(carsToHide.Contains(carCounter))
             {
                 car.gameObject.SetActive(false);
 

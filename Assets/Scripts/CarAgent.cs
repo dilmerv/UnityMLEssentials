@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Unity.MLAgents.Policies;
+﻿using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using static CarController;
@@ -12,20 +11,18 @@ public class CarAgent : BaseAgent
 
     private CarController carController;
 
-    private CarSpots carSpots;
-    
-    private CarGoal goal;
+    private Rigidbody carControllerRigidBody;
 
-    void Awake()
+    private CarSpots carSpots;
+
+    public override void Initialize()
     {
         originalPosition = transform.localPosition;
         behaviorParameters = GetComponent<BehaviorParameters>();
         carController = GetComponent<CarController>();
+        carControllerRigidBody = carController.GetComponent<Rigidbody>();
         carSpots = transform.parent.GetComponentInChildren<CarSpots>();
-    }
 
-    void Start() 
-    {
         ResetParkingLotArea();    
     }
 
@@ -40,8 +37,8 @@ public class CarAgent : BaseAgent
         carController.IsAutonomous = behaviorParameters.BehaviorType == BehaviorType.Default;
         transform.localPosition = originalPosition;
         transform.localRotation = Quaternion.identity;
-        carController.CarRigidbody.velocity = Vector3.zero;
-        carController.CarRigidbody.angularVelocity = Vector3.zero;
+        carControllerRigidBody.velocity = Vector3.zero;
+        carControllerRigidBody.angularVelocity = Vector3.zero;
 
         // reset which cars show or not show
         carSpots.Setup();
@@ -63,7 +60,7 @@ public class CarAgent : BaseAgent
         sensor.AddObservation(carSpots.CarGoal.transform.position);
         sensor.AddObservation(carSpots.CarGoal.transform.rotation);
 
-        sensor.AddObservation(carController.CarRigidbody.velocity);
+        sensor.AddObservation(carControllerRigidBody.velocity);
     }
     
     public override void OnActionReceived(float[] vectorAction)
