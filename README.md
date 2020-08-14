@@ -12,7 +12,6 @@ Example Scenes: (New Demos In Progress)
 
 <img src="https://github.com/dilmerv/UnityMLEssentials/blob/master/docs/images/ParkingLot2.gif" width="300">
 
-<img src="https://github.com/dilmerv/UnityMLEssentials/blob/master/docs/images/ParkingLot3.gif" width="300">
 
 **CrossTheRoad.unity** Demonstrates how to mimic Crossy Road game mechanic with machine learning.
 
