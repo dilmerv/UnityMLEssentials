@@ -3,6 +3,19 @@ Various examples of ml-agents while teaching concepts about it in my [YouTube Ch
 
 Example Scenes: (New Demos In Progress)
 
+**ParkingLot.unity** Demonstrates how to park a car with machine learning.
+**ParkingLotAdvanced.unity** Demonstrates how to park a car with machine learning in a more advanced area.
+
+**Config** used -> /Assets/Config/SelfParking.yaml
+
+<img src="https://github.com/dilmerv/UnityMLEssentials/blob/master/docs/images/ParkingLot1.gif" width="300">
+
+<img src="https://github.com/dilmerv/UnityMLEssentials/blob/master/docs/images/ParkingLot2.gif" width="300">
+
+<img src="https://github.com/dilmerv/UnityMLEssentials/blob/master/docs/images/ParkingLot3.gif" width="300">
+
+**CrossTheRoad.unity** Demonstrates how to mimic Crossy Road game mechanic with machine learning.
+
 **CrossTheRoad.unity** Demonstrates how to mimic Crossy Road game mechanic with machine learning.
 
 **Config** used -> /Assets/Config/CrossTheRoad.yaml
