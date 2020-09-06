@@ -19,7 +19,7 @@ public class CarSpots : MonoBehaviour
     [SerializeField]
     private int howManyCarsTohide = 1;
 
-    private IEnumerable<CarObstacle> parkedCars;
+    private List<CarObstacle> parkedCars = new List<CarObstacle>();
 
     private Dictionary<int, CachedCar> cachedParkedCars = new Dictionary<int, CachedCar>();
 
@@ -30,7 +30,8 @@ public class CarSpots : MonoBehaviour
     public void Awake()
     {
         parkedCars = GetComponentsInChildren<CarObstacle>(true)
-            .Where(c => c.CarObstacleTypeValue == CarObstacleType.Car);
+            .Where(c => c.CarObstacleTypeValue == CarObstacleType.Car)
+            .ToList();
 
         // cache all car positions and rotations
         foreach(CarObstacle obstacle in parkedCars)
