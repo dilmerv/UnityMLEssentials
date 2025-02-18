@@ -15,8 +15,6 @@ Example Scenes: (New Demos In Progress)
 
 **CrossTheRoad.unity** Demonstrates how to mimic Crossy Road game mechanic with machine learning.
 
-**CrossTheRoad.unity** Demonstrates how to mimic Crossy Road game mechanic with machine learning.
-
 **Config** used -> /Assets/Config/CrossTheRoad.yaml
 
 <img src="https://github.com/dilmerv/UnityMLEssentials/blob/master/docs/images/CrossTheRoad1.gif" width="300">
